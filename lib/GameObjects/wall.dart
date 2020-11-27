@@ -32,7 +32,7 @@ class Wall {
     // Definir propiedades del cuerpo del objeto
     FixtureDef fixDef = FixtureDef();
     fixDef.density = 20;
-    fixDef.restitution = 1;
+    fixDef.restitution = 0;
     fixDef.friction = 0;
     fixDef.shape = shape;
     body.createFixtureFromFixtureDef(fixDef);
