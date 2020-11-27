@@ -38,21 +38,21 @@ class _GameWidgetState extends State<GameWidget> {
 }
 
 class MazeGame extends Game {
-  //Needed for Box2D
+  //
   static const int WORLD_POOL_SIZE = 100;
   static const int WORLD_POOL_CONTAINER_SIZE = 10;
-  //Main physic object -> our game world
+  //
   World world;
-  //Zero vector -> no gravity
+  //
   final Vector2 _gravity = Vector2.zero();
-  //Scale factore for our world
+  //
   final int scale = 5;
-  //Size of the screen from the resize event
+  //
   Size screenSize;
-  //Rectangle based on the size, easy to use
+  //
   Rect _screenRect;
   Rect get screenRect => _screenRect;
-  //Handle views and transition between
+  //
   ViewManager _viewManager;
 
   bool pauseGame = false;
@@ -63,16 +63,16 @@ class MazeGame extends Game {
     initialize(startView: startView);
   }
 
-  //Initialize all things we need, devided by things need the size and things without
+  //
   Future initialize({GameView startView = GameView.Playing}) async {
-    //Call the resize as soon as flutter is ready
+    //
     resize(await Flame.util.initialDimensions());
     _viewManager = ViewManager(this);
     _viewManager.changeView(startView);
   }
 
   void resize(Size size) {
-    //Store size and related rectangle
+    //
     screenSize = size;
     _screenRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
     super.resize(size);
@@ -80,15 +80,15 @@ class MazeGame extends Game {
 
   @override
   void render(Canvas canvas) {
-    //If no size information -> leave
+    //
     if (screenSize == null || pauseGame) {
       return;
     }
-    //Save the canvas and resize/scale it based on the screenSize
+    //
     canvas.save();
     canvas.scale(screenSize.width / scale);
     _viewManager?.render(canvas);
-    //Finish the canvas and restore it to the screen
+    //
     canvas.restore();
   }
 
@@ -98,7 +98,7 @@ class MazeGame extends Game {
       return;
     }
 
-    //Run any physic related calculation
+    //
     world.stepDt(t, 100, 100);
     _viewManager?.update(t);
   }

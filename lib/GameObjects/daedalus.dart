@@ -13,7 +13,7 @@ class Daedalus {
   OrthogonalMaze _mazeGenerator;
   Size cellSize;
 
-  Daedalus(this.game, {int width = 10, int height = 10}) {
+  Daedalus(this.game, {int width = 5, int height = 5}) {
     _width = width;
     _height = width;
     // Calcula el tamaño de las celdas para ajustarse a la pantalla
