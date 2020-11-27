@@ -10,7 +10,7 @@ void main() async {
   runApp(App());
 }
 
-/// Setup all Flame specific parts
+// Configurar Flame
 Future setupFlame() async {
   // Requerido por Flutter para usar async
   WidgetsFlutterBinding.ensureInitialized();
